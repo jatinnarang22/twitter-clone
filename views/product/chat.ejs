@@ -1,0 +1,20 @@
+<div>jatin</div>
+
+<form action="/chat" method="POST">
+  <textarea
+    name="text"
+    id="text"
+    cols="30"
+    rows="10"
+    placeholder="what's Happening ??"
+  ></textarea>
+  <button type="submit">tweet</button>
+</form>
+
+<div>
+  <ul>
+    <% for(let item of chat){ %>
+    <li><%= item.content %></li>
+    <%}%>
+  </ul>
+</div>
