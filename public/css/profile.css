@@ -1,0 +1,12 @@
+.top{
+    margin: 0px 8rem 0 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.img-name img{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+}

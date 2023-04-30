@@ -1,13 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const Chat = require("../models/chats");
 const User = require("../models/user");
-const Chat = require("../models/chat");
 const bcrypt = require("bcrypt");
-
+router.get("/", (req, res) => {
+  return res.redirect("/signin");
+});
 router.get("/SignIn", async (req, res) => {
+  if (req.isAuthenticated) return res.redirect("/chat");
   res.render("auth/user_sign_in");
 });
 router.get("/Signup", async (req, res) => {
+  if (req.isAuthenticated) return res.redirect("/chat");
   res.render("auth/user_sign_up");
 });
 
@@ -18,10 +22,10 @@ router.post("/create", async (req, res) => {
       return res.redirect("back");
     }
 
-    let { name, email, password } = req.body;
+    let { img, username, name, email, password } = req.body;
 
     // Validate user input
-    if (!(email && password && name)) {
+    if (!(username && email && password && name)) {
       res.status(400).send("All input is required");
     }
 
@@ -39,9 +43,11 @@ router.post("/create", async (req, res) => {
 
     // Create user in our database
     const user = await User.create({
+      username: username,
       name: name,
       email: email,
       password: encryptedUserPassword,
+      img: img,
     });
 
     //Create token
@@ -70,9 +76,9 @@ router.post("/create-session", async (req, res) => {
 
     if (user && (await bcrypt.compare(password, user.password))) {
       res.cookie("user_id", user.id);
-      res.render("product/chat", { chat });
+      res.redirect("/chat");
     } else {
-      console("error u have to first signup");
+      console.log("error u have to first signup");
       res.redirect("./SignUp");
     }
 
@@ -99,19 +105,22 @@ router.post("/create-session", async (req, res) => {
     // }
   } catch (err) {
     console.log(err);
-    res.redirect("back");
+    res.redirect("./SignUp");
   }
 });
 
 router.get("/profile", async (req, res) => {
   if (req.cookies.user_id) {
-    let userid = User.findOne(req.cookies.user_id);
-    if (userid) {
-      let user = await User.findOne({});
-      res.render("product/profile", { user });
-    } else {
-      return res.redirect("./Signin");
-    }
+    const { user_id } = req.cookies;
+    // if (user_id) {
+    // console.log(user_id);
+    // let user = await  User.find
+    let user = await User.findOne({ _id: user_id });
+    console.log(user);
+    res.render("product/profile", { user });
+    // } else {
+    //   return res.redirect("./Signin");
+    // }
   } else {
     return res.redirect("./Signin");
   }

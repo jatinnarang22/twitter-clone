@@ -9,28 +9,46 @@ const LocalStrategy = require("passport-local");
 const bcrypt = require("bcrypt");
 let user = require("./routes/user");
 const session = require("express-session");
-const cookieParser=require("cookie-parser");
+const cookieParser = require("cookie-parser");
+const User = require("./models/user.js");
 
+//multer
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    return cb(null, "./upload");
+  },
+  filename: function (req, file, cb) {
+    return cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+const upload = multer({ storage });
+exports.upload = upload;
+// app.use(upload);
 // let revRoutes = require("./routes/review");
 
-mongoose.set("strictQuery", true);
-mongoose
-  .connect("mongodb://127.0.0.1:27017/twitterclone")
-  .then(() => {
-    console.log("DB connected");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-  // app.use(cookieParser);
+// app.use(cookieParser);
 // app.use(methodOverride("_method"));
+
 app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); //static files
+app.use(express.static(path.join(__dirname, "upload")));
 app.use(cookieParser());
-
+app.use(async (req, res, next) => {
+  console.log(true);
+  const { user_id } = req.cookies;
+  if (user_id) {
+    try {
+      const user = await User.findById(user_id);
+      if (user) req.isAuthenticated = true;
+    } catch (err) {}
+  }
+  next();
+});
 // const sessionConfig = {
 //   secret: 'weneedsomebettersecret',
 //   resave: false,
@@ -50,6 +68,7 @@ app.use(cookieParser());
 // passport.use(new LocalStrategy(user.authenticate()));
 
 // Routes require
+
 let chat = require("./routes/chat");
 
 //Middle express
@@ -57,6 +76,15 @@ app.use(chat);
 app.use(user);
 
 const port = 3000;
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`server connected at port ${port}`);
+  mongoose.set("strictQuery", true);
+  await mongoose
+    .connect("mongodb://127.0.0.1:27017/twitterclone")
+    .then(() => {
+      console.log("DB connected");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });

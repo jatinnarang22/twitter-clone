@@ -1,0 +1,37 @@
+.chatarea{
+  background-color: silver;
+}
+.chatarea textarea{
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+.form-chat-area{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+}
+.commentbox {
+  border: 2px solid black;
+}
+.bottem-box {
+  border: 2px solid black;
+}
+.top-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px;
+}
+
+.img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+.bottem-box {
+  display: flex;
+  justify-content: space-evenly;
+}

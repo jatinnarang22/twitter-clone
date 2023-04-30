@@ -1,5 +1,13 @@
+<link rel="stylesheet" href="css/profile.css">
 <div>
-  <h1>Twitter/profile page</h1>
-  <p>Name : <%= user.name %></p>
-  <p>Email : <%= user.email %></p>
+    <h1><%= user.username %></h1>
+    <div class="top">
+        <div class="img-name ">
+            <img src="<%= user.img %>" alt="">
+            <h1><%= user.name %></h1>
+        </div>
+        <h3>Posts</h3>
+        <h3>Followers</h3>
+        <h3>Following</h3>
+    </div>
 </div>

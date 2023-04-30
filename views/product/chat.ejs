@@ -1,20 +1,50 @@
-<div>jatin</div>
+<!-- <link rel="stylesheet" href="../../public/css/chat.css" /> -->
+<% layout('layouts/boilerplate')%>
 
-<form action="/chat" method="POST">
-  <textarea
-    name="text"
-    id="text"
-    cols="30"
-    rows="10"
-    placeholder="what's Happening ??"
-  ></textarea>
-  <button type="submit">tweet</button>
+<form class="form-chat-area" action="/chat" method="POST" enctype="multipart/form-data">
+  <div class="chatarea">
+      <img class="img" src=<%= user.img %> alt="">
+    <textarea
+      name="text"
+      id="text"
+      cols="50"
+      rows="0"
+      placeholder="what's Happening ??"
+    ></textarea>
+    <button type="submit">tweet</button>
+    
+   <input type="file" id="myFile" name="filename">
+  </div>
+  
 </form>
 
 <div>
-  <ul>
+  <div>
+    <!-- username  -->
+
+    <!-- comment -->
     <% for(let item of chat){ %>
-    <li><%= item.content %></li>
+    <div class="commentbox">
+      <div class="top-box">
+        <img class="img" src=<%= item.user.img %>
+        alt="" />
+        <div class="box">
+          <h1><%= item.user.name %></h1>
+          <% if(item.chatimg) { %>
+            <%= console.log( item.chatimg) %>
+           <img src=/<%= item.chatimg %>
+        alt="" />   
+         
+          <% } %>
+          
+          <h3><%= item.content %></h3>
+        </div>
+      </div>
+      <div class="bottem-box">
+        <h4>comments</h4>
+        <h4>like</h4>
+      </div>
+    </div>
     <%}%>
-  </ul>
+  </div>
 </div>
