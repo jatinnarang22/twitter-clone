@@ -1,19 +1,30 @@
-<!-- <link rel="stylesheet" href="../../public/css/chat.css" /> -->
+
 <% layout('layouts/boilerplate')%>
 
+<div class="body-chat">
+<div class="menu-bar">
+  <div style="display: flex; color: #6f11f5;flex-wrap: wrap;" ><img style="height: 2rem;" src="./home.png" alt=""><h3>Home</h1></div>
+  <div style="display: flex;color: #6f11f5;flex-wrap: wrap;"><img style="height: 2rem;" src="./profile.png" alt=""><h3>Profile</h1></div>
+  <div style="display: flex;color: #6f11f5;flex-wrap: wrap;"><img style="height: 2rem;" src="./logout.png" alt=""><h3>Logout</h1></div>
+</div>
+<div class="center-body">
 <form class="form-chat-area" action="/chat" method="POST" enctype="multipart/form-data">
   <div class="chatarea">
+    <div class="box-file">
       <img class="img" src=<%= user.img %> alt="">
-    <textarea
-      name="text"
-      id="text"
-      cols="50"
-      rows="0"
-      placeholder="what's Happening ??"
-    ></textarea>
-    <button type="submit">tweet</button>
-    
-   <input type="file" id="myFile" name="filename">
+      <textarea
+        name="text"
+        id="text"
+        cols="50"
+        rows="0"
+        placeholder="what's Happening ??"
+      ></textarea>
+    </div> 
+    <div style="display: flex;justify-content: space-evenly;    align-items: center;">
+      <input type="file" id="myFile" name="filename">
+      <button type="submit">tweet</button>
+    </div>
+   
   </div>
   
 </form>
@@ -47,4 +58,15 @@
     </div>
     <%}%>
   </div>
+</div>
+</div>
+<div class="left-body">
+  <h1>file1</h1>
+  <h1>file1</h1>
+  <h1>file1</h1>
+  <h1>file1</h1>
+  <h1>file1</h1>
+  <h1>file1</h1>
+
+</div>
 </div>

@@ -5,14 +5,14 @@ let userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  chatimg:{
-    type:String,
-    trim:true,
+  chatimg: {
+    type: String,
+    trim: true,
   },
   img: {
     type: String,
     trim: true,
-    default: "/images/dummy.jpg",
+    default: "/default-img.webp",
   },
   content: {
     type: String,

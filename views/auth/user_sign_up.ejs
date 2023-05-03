@@ -1,22 +1,54 @@
-<h1>Sign UP</h1>
-<form action="create" method="POST">
-  <input
-    type="text"
-    class="form-control"
-    name="img"
-    id="imge"
-    placeholder="Image URL of Product"
-  />
-  <!-- <input type="file" name="name" placeholder="Your foto" required /> -->
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="text" name="username" placeholder="Username" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <input type="password" name="password" placeholder="password" required />
-  <input
-    type="password"
-    name="Confirm_password"
-    placeholder="Confirm_password"
-    required
-  />
-  <input type="submit" value="Sign Up" />
-</form>
+<!-- <link rel="stylesheet" href="./css/signup"> -->
+<link rel="stylesheet" href="./css/signup" />
+<div class="signin-body">
+  <div class="signin-center">
+    <form method="post" action="/create">
+        <div class="inner-area">
+          <h1 style="padding-top: 30px; color: #6f11f5">Sign-UP</h1>
+          <div class="inner-area-login">
+          <div class="lable-input">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="lable-input">
+            <label for="Username">User Name</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+            />
+            </div>
+            <div class="lable-input">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            </div>
+            <div class="lable-input">
+            <label for="email">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              required
+            />
+            </div>
+            <div class="lable-input">
+            <label for="email">Confirm Password</label>
+            <input
+              type="password"
+              name="Confirm_password"
+              placeholder="Confirm_password"
+              required
+             />
+             </div>
+            <button style="color: white;">Sign-UP</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>

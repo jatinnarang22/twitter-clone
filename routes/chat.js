@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const path = require('path');
+const path = require("path");
 const router = express.Router();
 const { upload } = require("../index");
 
@@ -26,23 +26,22 @@ router.post("/chat", upload.single("filename"), async (req, res) => {
   // console.log(req.cookies);
   console.log(filename);
   // console.log(req.file);
-  
+
   const { user_id } = req.cookies;
-  let _id ;
-  if(req.file===undefined){
-  _id = await Chat.create({
-    // chatimg: req.file.filename,
-    content: text,
-    user: user_id,
-  });
-}
-else{ 
-   _id= await Chat.create({
-    chatimg: req.file.filename,
-    content: text,
-    user: user_id,
-  });
-}
+  let _id;
+  if (req.file === undefined) {
+    _id = await Chat.create({
+      // chatimg: req.file.filename,
+      content: text,
+      user: user_id,
+    });
+  } else {
+    _id = await Chat.create({
+      chatimg: req.file.filename,
+      content: text,
+      user: user_id,
+    });
+  }
   const ress = await User.findByIdAndUpdate(user_id, { $push: { chats: _id } });
   // console.log(ress);
   res.redirect("/chat");
