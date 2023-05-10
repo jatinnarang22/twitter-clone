@@ -3,6 +3,8 @@ const router = express.Router();
 const Chat = require("../models/chats");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const { upload } = require("../index");
+console.log(upload);
 router.get("/", (req, res) => {
   return res.redirect("/signin");
 });
@@ -115,8 +117,10 @@ router.get("/profile", async (req, res) => {
     // if (user_id) {
     // console.log(user_id);
     // let user = await  User.find
-    let user = await User.findOne({ _id: user_id });
-    console.log(user);
+    let user = await User.findOne({ _id: user_id }).populate("chats");
+    // user.populate("chats");
+    // console.log(user.populate("chats"), "mychats");
+    // console.log(await User.find({}).populate('chats'));
     res.render("product/profile", { user });
     // } else {
     //   return res.redirect("./Signin");
@@ -125,4 +129,38 @@ router.get("/profile", async (req, res) => {
     return res.redirect("./Signin");
   }
 });
+router.get("/user/edit", async (req, res) => {
+  if (req.isAuthenticated) {
+    try {
+      if (req.cookies.user_id) {
+        const { user_id } = req.cookies;
+        let user = await User.findOne({ _id: user_id });
+        return res.render("product/edit", { user });
+      }
+    } catch (e) {
+      res.send(e);
+    }
+  }
+  res.redirect("back");
+});
+router.patch("/profile/:id", upload.single("filename"), async (req, res) => {
+  let { id } = req.params;
+  let { name, filename, username, email } = req.body;
+  // console.log(req.body.filename);
+  console.log(req.file.filename);
+  console.log(name);
+  console.log(username);
+  console.log(email);
+  console.log(id);
+
+  // console.lof(upload.single(filename));
+  await User.findOneAndUpdate(id, {
+    name: name,
+    img: req.file.filename,
+    username: username,
+    email: email,
+  });
+  res.redirect("/profile");
+});
+
 module.exports = router;

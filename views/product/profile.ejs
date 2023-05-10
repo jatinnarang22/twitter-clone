@@ -1,13 +1,45 @@
-<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="./css/profile.css">
 <div>
-    <h1><%= user.username %></h1>
+<div>
+    <div class="user-setting">
+        <h1><%= user.username %></h1>
+        <a href="user/edit"><img src="./setting.png" alt=""></a>
+    </div>
     <div class="top">
         <div class="img-name ">
             <img src="<%= user.img %>" alt="">
             <h1><%= user.name %></h1>
         </div>
-        <h3>Posts</h3>
-        <h3>Followers</h3>
-        <h3>Following</h3>
+        <div class="folow">
+            <h1><%= user.chats.length %></h1>
+            <h3>Posts</h3>
+        </div>
+        <div class="folow">
+            <h1>1</h1>
+            <h3>Followers</h3>
+        </div>
+        <div class="folow">   
+            <h1>1</h1>
+            <h3>Following</h3>
+        </div>
     </div>
+</div>
+<div class="items">
+    <% for(let item of user.chats){ %>
+        <div class="item" >
+            <div class="img-cont">
+               <img src=<%= item.chatimg %> alt="">
+                <h3><%= item.content %></h3>
+            </div>
+            <div class="like-com">
+                <div class="like">
+                    <img  src="./like.png" alt=""><p>10000Like</p>
+                </div>
+                <div class="comment">
+                    <img src="./comment.png" alt=""><p>Comment</p>
+                </div>
+            </div>
+        </div>
+        
+    <% } %>
 </div>

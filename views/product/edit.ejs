@@ -1,0 +1,40 @@
+<!-- <link rel="stylesheet" href="./css/signup"> -->
+<link rel="stylesheet" href="../css/edit.css">
+<div class="signin-body">
+  <div class="signin-center">
+    <form action="/profile/<%= user._id%>?_method=PATCH" method="POST" enctype="multipart/form-data">
+        <div class="inner-area">
+          <h1 style="padding-top: 30px; color: #6f11f5">Edit</h1>
+          <div class="inner-area-login">
+            <div class="lable-input">
+                <label for="img">Profile Pic</label>
+                <input type="file" id="myFile" name="filename">
+            </div>
+          <div class="lable-input">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" value=<%= user.name%> required />
+          </div>
+          <div class="lable-input">
+            <label for="Username">User Name</label>
+            <input
+              type="text"
+              name="username"
+              value=<%= user.username%>
+              required
+            />
+            </div>
+            <div class="lable-input">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value=<%= user.email%>
+              required
+            />
+            </div>
+            <button type="submit" style="color: white;">Update</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>

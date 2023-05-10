@@ -1,12 +1,78 @@
+
+.user-setting{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.user-setting img{
+    height: 30px;
+    width: 30px;
+    margin-right: 3rem;
+}
 .top{
     margin: 0px 8rem 0 4rem;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
 }
+.img-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.folow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .img-name img{
     height: 10rem;
     width: 10rem;
     border-radius: 50%;
+}
+.items{
+    display: flex;
+    flex-wrap: wrap;
+}
+.items img{
+    height: 25vh;
+    width: 100%;
+}
+.item{
+    border: 2px solid;
+    padding: 26px;
+    width: 20vw;
+    height: 100%;
+    margin: 10px;
+}
+.item .img-cont{
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+.item .like-com{
+    display: flex;
+    justify-content: space-around;
+
+}
+.item .like-com .like{
+    display: flex;
+    align-items: center;
+}
+.item .like-com .comment{
+    display: flex;
+    align-items: center;
+}
+.item .like-com .like img{
+    height: 2rem;
+    width: 2rem;
+    
+
+}
+.item .like-com .comment img{
+    height: 2rem;
+    width: 2rem;
+    
 }

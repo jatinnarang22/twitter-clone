@@ -15,7 +15,7 @@ router.get("/chat", async (req, res) => {
   let chat = await Chat.find({}).populate("user");
   // console.log(req.cookies.user_id);
   let user = await User.findById(req.cookies.user_id);
-  // console.log(user);
+  // console.log(user.populate("chats"));
   // console.log(await User.find)
   res.render("product/chat", { chat, user });
 });

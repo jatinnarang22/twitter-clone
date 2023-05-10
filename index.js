@@ -7,10 +7,10 @@ const path = require("path");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const bcrypt = require("bcrypt");
-let user = require("./routes/user");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const User = require("./models/user.js");
+let methodOverride = require("method-override");
 
 //multer
 const multer = require("multer");
@@ -31,6 +31,7 @@ exports.upload = upload;
 // app.use(cookieParser);
 // app.use(methodOverride("_method"));
 
+app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -70,7 +71,7 @@ app.use(async (req, res, next) => {
 // Routes require
 
 let chat = require("./routes/chat");
-
+let user = require("./routes/user");
 //Middle express
 app.use(chat);
 app.use(user);

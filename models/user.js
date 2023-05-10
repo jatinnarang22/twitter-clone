@@ -11,24 +11,24 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     name: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      required: true,
+    },
     username: {
       type: String,
       required: true,
     },
-    img:{
-        type:String,
-        trim: true,
-        default:'/images/dummy.jpg'
+    img: {
+      type: String,
+      trim: true,
+      default: '/default-img.webp"',
     },
-    chats:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'chats'
-        }
-    ]
+    chats: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Chats",
+      },
+    ],
   },
   {
     timestamps: true,
