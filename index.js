@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, "public"))); //static files
 app.use(express.static(path.join(__dirname, "upload")));
 app.use(cookieParser());
 app.use(async (req, res, next) => {
-  console.log(true);
+  // console.log(true);
   const { user_id } = req.cookies;
   if (user_id) {
     try {

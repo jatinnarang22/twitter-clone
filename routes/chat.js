@@ -4,7 +4,7 @@ const path = require("path");
 const router = express.Router();
 const { upload } = require("../index");
 
-console.log(upload);
+// console.log(upload);
 
 const Chat = require("../models/chats");
 const User = require("../models/user");

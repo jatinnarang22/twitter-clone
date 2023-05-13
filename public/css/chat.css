@@ -13,6 +13,9 @@ main{
   width: 100%;
   padding: 16px;
 }
+.box img{
+  width: 80%;
+}
 .chatarea textarea{
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -78,4 +81,13 @@ button{
   border-radius: 11px;
   width: 8rem;
   font-size: 20px;
+}
+.imgname img{
+  width: 100%;
+  height: 50%;
+  border-radius: 50%;
+}
+.follow-post{
+  display: flex;
+  flex-direction: column;
 }

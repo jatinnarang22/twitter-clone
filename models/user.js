@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
     img: {
       type: String,
       trim: true,
-      default: '/default-img.webp"',
+      default: '/dummy.jpg',
     },
     chats: [
       {

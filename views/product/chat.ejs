@@ -3,7 +3,7 @@
 
 <div class="body-chat">
 <div class="menu-bar">
-  <a href="" style="display: flex; text-decoration: none; color: #6f11f5;flex-wrap: wrap;margin-top:30px;" ><img style="height: 2rem;" src="./home.png" alt=""><h3>Home</h3></a>
+  <a href="" style="display: flex; text-decoration: none; color: #6f11f5;flex-wrap: wrap;margin-top:30px;" ><img style="height: 2rem;" src="./home.png" alt=""><h3 >Home</h3></a>
   <a href="/profile" style="display: flex; text-decoration: none; color: #6f11f5;flex-wrap: wrap;margin-top:30px;"><img style="height: 2rem;" src="./profile.png" alt=""><h3>Profile</h3></a>
   <a href="" style="display: flex; text-decoration: none; color: #6f11f5;flex-wrap: wrap;margin-top:30px;"><img style="height: 2rem;" src="./logout.png" alt=""><h3>Logout</h3></a>
 </div>
@@ -61,12 +61,33 @@
 </div>
 </div>
 <div class="left-body">
-  <h1>file1</h1>
-  <h1>file1</h1>
-  <h1>file1</h1>
-  <h1>file1</h1>
-  <h1>file1</h1>
-  <h1>file1</h1>
+
+  <div class="profilepic">
+    <div class="user-setting">
+    <h1 style="width: 100%;"><%= user.username %></h1>
+</div>
+<div class="top">
+    <div class="imgname ">
+        <img src="<%= user.img %>" alt="">
+        <h1><%= user.name %></h1>
+    </div>
+    <div class="follow-post">
+      <div class="folow">
+          <h1><%= user.chats.length %></h1>
+          <h3>Posts</h3>
+      </div>
+      <div class="folow">
+          <h1>1</h1>
+          <h3>Followers</h3>
+      </div>
+      <div class="folow">   
+          <h1>1</h1>
+          <h3>Following</h3>
+      </div>
+  </div>  
+    </div>
+  </div>
+</div> 
 
 </div>
 </div>
